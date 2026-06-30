@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Welcome') {
+            steps {
+                echo '====================================='
+                echo 'Welcome to the DevSecOps Pipeline!'
+                echo 'This is our first Jenkins Pipeline.'
+                echo '====================================='
+            }
+        }
+
+        stage('System Information') {
+            steps {
+                sh 'whoami'
+                sh 'pwd'
+                sh 'hostname'
+                sh 'java -version'
+                sh 'git --version'
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'Pipeline execution completed.'
+        }
+
+        success {
+            echo 'Pipeline executed successfully!'
+        }
+
+        failure {
+            echo 'Pipeline execution failed.'
+        }
+    }
+}
