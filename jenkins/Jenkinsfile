@@ -2,37 +2,33 @@ pipeline {
     agent any
 
     stages {
-        stage('Welcome') {
+
+        stage('Checkout') {
             steps {
-                echo '====================================='
-                echo 'Welcome to the DevSecOps Pipeline!'
-                echo 'This is our first Jenkins Pipeline.'
-                echo '====================================='
+                checkout scm
             }
         }
 
-        stage('System Information') {
+        stage('Build Java Application') {
             steps {
-                sh 'whoami'
-                sh 'pwd'
-                sh 'hostname'
-                sh 'java -version'
-                sh 'git --version'
+                dir('app') {
+                    sh 'mvn clean package'
+                }
             }
         }
     }
 
     post {
-        always {
-            echo 'Pipeline execution completed.'
-        }
-
         success {
-            echo 'Pipeline executed successfully!'
+            echo "Build completed successfully!"
         }
 
         failure {
-            echo 'Pipeline execution failed.'
+            echo "Build failed!"
+        }
+
+        always {
+            echo "Pipeline execution finished."
         }
     }
 }
