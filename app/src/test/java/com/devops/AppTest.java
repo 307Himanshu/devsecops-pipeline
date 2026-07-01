@@ -7,6 +7,6 @@ public class AppTest {
 
     @Test
     void applicationShouldRun() {
-        assertTrue(true);
+        assertTrue(false);
     }
 }
