@@ -16,6 +16,12 @@ pipeline {
                 }
             }
         }
+
+        stage('Archive Build Artifact') {
+            steps {
+                archiveArtifacts artifacts: 'app/target/*.jar', fingerprint: true
+            }
+        }
     }
 
     post {
