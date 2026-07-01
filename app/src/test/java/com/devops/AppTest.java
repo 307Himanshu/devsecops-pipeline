@@ -9,3 +9,4 @@ public class AppTest {
     void applicationShouldRun() {
         assertTrue(true);
 }
+}
