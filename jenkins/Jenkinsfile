@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    options {
+        skipDefaultCheckout(true)
+    }
+
     stages {
 
         stage('Checkout') {
@@ -9,10 +13,18 @@ pipeline {
             }
         }
 
+        stage('Run Unit Tests') {
+            steps {
+                dir('app') {
+                    sh 'mvn clean test'
+                }
+            }
+        }
+
         stage('Build Java Application') {
             steps {
                 dir('app') {
-                    sh 'mvn clean package'
+                    sh 'mvn package -DskipTests'
                 }
             }
         }
