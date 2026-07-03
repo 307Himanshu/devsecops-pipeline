@@ -68,6 +68,19 @@ stage('Quality Gate') {
     }
 }
 
+stage('Deploy Docker Container') {
+    steps {
+        sh '''
+            docker stop devsecops-app || true
+            docker rm devsecops-app || true
+
+            docker run -d \
+                --name devsecops-app \
+                -p 8081:8080 \
+                devsecops-app:latest
+        '''
+    }
+}
         stage('Archive Build Artifact') {
             steps {
                 archiveArtifacts artifacts: 'app/target/*.jar', fingerprint: true
