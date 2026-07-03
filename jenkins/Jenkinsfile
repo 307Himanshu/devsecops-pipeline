@@ -60,6 +60,12 @@ pipeline {
             }
         }
 
+        stage('Build Docker Image') {
+          steps {
+        sh 'docker build -t devsecops-app:latest -f docker/Dockerfile .'
+    }
+}
+
         stage('Archive Build Artifact') {
             steps {
                 archiveArtifacts artifacts: 'app/target/*.jar', fingerprint: true
