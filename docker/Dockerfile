@@ -4,8 +4,8 @@ FROM eclipse-temurin:21-jre
 # Working directory inside the container
 WORKDIR /app
 
-# Copy the JAR file built by Maven
-COPY app/target/devops-status-service-1.0.0.jar app.jar
+# Copy the Spring Boot executable JAR
+COPY app/target/devops-status-service-0.0.1-SNAPSHOT.jar app.jar
 
 # Application listens on port 8080
 EXPOSE 8080
