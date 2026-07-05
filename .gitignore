@@ -32,3 +32,8 @@ node_modules/
 # Python
 __pycache__/
 *.pyc
+# Ansible
+ansible/inventory.ini
+
+# Terraform Variables
+terraform/terraform.tfvars

@@ -8,6 +8,6 @@ public class HomeController {
 
     @GetMapping("/")
     public String home() {
-        return "Hello from Jenkins CI/CD Pipeline!";
+        return "DevSecOps Pipeline - Kubernetes Rolling Update";
     }
 }

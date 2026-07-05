@@ -1,0 +1,31 @@
+---
+- name: Configure DevSecOps EC2
+  hosts: devsecops
+  become: yes
+
+  tasks:
+    - name: Update all packages
+      dnf:
+        name: "*"
+        state: latest
+
+    - name: Install Git
+      dnf:
+        name: git
+        state: present
+
+    - name: Install Java 21
+      dnf:
+        name: java-21-amazon-corretto
+        state: present
+
+    - name: Install Docker
+      dnf:
+        name: docker
+        state: present
+
+    - name: Enable Docker service
+      service:
+        name: docker
+        enabled: yes
+        state: started
