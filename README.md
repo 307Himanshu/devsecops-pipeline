@@ -54,7 +54,7 @@ devsecops-pipeline/
 - ✅ Kubernetes Deployment
 - ✅ Terraform Infrastructure
 - ✅ Ansible Automation
-- ⏳ Documentation in Progress
+
 
 ---
 
